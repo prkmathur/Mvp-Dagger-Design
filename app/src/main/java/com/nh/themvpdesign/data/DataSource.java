@@ -5,4 +5,11 @@ package com.nh.themvpdesign.data;
  */
 
 public interface DataSource {
+
+    interface getLoggedIn{
+        
+        void loginResponse();
+
+        void networkError();
+    }
 }
