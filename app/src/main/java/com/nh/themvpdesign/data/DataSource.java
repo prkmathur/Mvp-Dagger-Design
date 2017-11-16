@@ -6,9 +6,9 @@ package com.nh.themvpdesign.data;
 
 public interface DataSource {
 
-    interface getLoggedIn{
+    interface getgithubRepo{
         
-        void loginResponse();
+        void githubRepoResponse();
 
         void networkError();
     }
