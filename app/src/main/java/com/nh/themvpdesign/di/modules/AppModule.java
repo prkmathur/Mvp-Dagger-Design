@@ -16,6 +16,7 @@ import com.squareup.picasso.Picasso;
 import org.joda.time.DateTime;
 
 import java.io.File;
+import java.util.concurrent.TimeUnit;
 
 import javax.inject.Singleton;
 
@@ -63,13 +64,14 @@ public class AppModule {
     @Provides
     @ApplicationScope
     public HttpLoggingInterceptor provideHttpLoggingInterceptor(){
-        return new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+        HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override
             public void log(String message) {
-
                 Timber.i(message);
             }
         });
+        interceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
+        return interceptor;
     }
 
     @Provides
@@ -78,6 +80,8 @@ public class AppModule {
         return new OkHttpClient.Builder()
                 .addInterceptor(httpLoggingInterceptor)
                 .cache(cache)
+                .connectTimeout(60 * 1000, TimeUnit.MILLISECONDS)
+                .readTimeout(60 * 1000, TimeUnit.MILLISECONDS)
                 .build();
     }
 
@@ -100,7 +104,7 @@ public class AppModule {
     @ApplicationScope
     public Retrofit provideRetrofit(OkHttpClient okHttpClient, Gson gson){
         return new Retrofit.Builder()
-                .baseUrl("")
+                .baseUrl("https://api.github.com")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
                 .build();

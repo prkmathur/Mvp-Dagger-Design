@@ -14,11 +14,11 @@ public class DataRepository implements DataSource {
 
     private Context context;
 
-    @Inject
-    RemoteDataSource remoteDataSource;
+    private RemoteDataSource remoteDataSource;
 
-    public DataRepository(Context context) {
+    public DataRepository(Context context,RemoteDataSource remoteDataSource) {
         this.context = context;
+        this.remoteDataSource = remoteDataSource;
     }
 
     @Override

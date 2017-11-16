@@ -13,6 +13,11 @@ import retrofit2.http.Path;
  */
 
 public interface NetworkService {
+
     @GET("users/{username}/repos")
     Call<List<GithubRepo>> getReposForUser(@Path("username") String username);
+
+    @GET("repositories")
+    Call<List<GithubRepo>> getAllRepos();
+
 }

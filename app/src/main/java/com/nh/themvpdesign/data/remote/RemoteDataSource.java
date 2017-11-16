@@ -21,20 +21,21 @@ import timber.log.Timber;
 
 public class RemoteDataSource implements DataSource {
 
-    @Inject
-    NetworkService  networkService;
+
+    private NetworkService  networkService;
+
+    private SharedPreferences sharedPreferences;
 
     @Inject
-    SharedPreferences sharedPreferences;
-
-    @Inject
-    public RemoteDataSource() {
+    public RemoteDataSource(NetworkService  networkService,SharedPreferences sharedPreferences) {
+        this.networkService = networkService;
+        this.sharedPreferences = sharedPreferences;
     }
 
     @Override
     public void getGithubRepos(String username, final getgithubRepo callback) {
 
-        Call<List<GithubRepo>> listCall =  networkService.getReposForUser(username);
+        Call<List<GithubRepo>> listCall =  networkService.getAllRepos();
         listCall.enqueue(new Callback<List<GithubRepo>>() {
             @Override
             public void onResponse(Call<List<GithubRepo>> call, Response<List<GithubRepo>> response) {

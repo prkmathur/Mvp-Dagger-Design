@@ -11,7 +11,11 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.nh.themvpdesign.R;
+import com.nh.themvpdesign.data.NetworkService;
 import com.nh.themvpdesign.databinding.ActivityAuthenticationBinding;
+import com.nh.themvpdesign.models.GithubRepo;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -20,12 +24,18 @@ import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
 import dagger.android.HasFragmentInjector;
 import dagger.android.support.HasSupportFragmentInjector;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 import timber.log.Timber;
 
 public class AuthenticationActivity extends FragmentActivity implements AuthenticationContract.View,View.OnClickListener,HasSupportFragmentInjector {
 
     @Inject
     DispatchingAndroidInjector<Fragment> fragmentDispatchingAndroidInjector;
+
+    @Inject
+    NetworkService networkService;
 
     @Inject
     AuthenticationContract.Presenter presenter;
@@ -63,7 +73,7 @@ public class AuthenticationActivity extends FragmentActivity implements Authenti
 
     @Override
     public void GithubRepos(String response) {
-
+        binding.editText2.setText(response);
     }
 
     @Override
@@ -83,19 +93,13 @@ public class AuthenticationActivity extends FragmentActivity implements Authenti
         switch (viewId){
 
             case R.id.button:
-                Timber.i("PresenterObject"+Integer.toString(presenter.hashCode()));
-                String name = binding.editText.getText().toString();
-                if(name == null || name.isEmpty()){
-                    return;
-                }
-                sharedPreferences.edit().putInt("LENGTH",name.length()).commit();
-                presenter.appendNamWithDepartment(name);
+                presenter.getGithubRepos("prkmathur");
+
                 break;
 
         }
 
     }
-
     protected void addFragment(){
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
