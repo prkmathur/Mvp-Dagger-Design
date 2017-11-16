@@ -1,14 +1,20 @@
 package com.nh.themvpdesign.authentication;
 
+import com.nh.themvpdesign.data.DataRepository;
+import com.nh.themvpdesign.data.DataSource;
+
 import javax.inject.Inject;
 
 /**
  * Created by dell pc on 11-11-2017.
  */
 
-public class AuthenticationPresenter implements AuthenticationContract.Presenter {
+public class AuthenticationPresenter implements AuthenticationContract.Presenter,DataSource.getgithubRepo {
 
-    AuthenticationContract.View view;
+    @Inject
+    DataRepository dataRepository;
+
+    private AuthenticationContract.View view;
 
     @Inject
     public AuthenticationPresenter() {
@@ -16,13 +22,8 @@ public class AuthenticationPresenter implements AuthenticationContract.Presenter
     }
 
     @Override
-    public void login() {
-
-    }
-
-    @Override
-    public void register() {
-
+    public void getGithubRepos(String username) {
+        dataRepository.getGithubRepos(username,this);
     }
 
     @Override
@@ -42,6 +43,16 @@ public class AuthenticationPresenter implements AuthenticationContract.Presenter
             return;
         }
         view.appendedName("Android - "+name);
+
+    }
+
+    @Override
+    public void githubRepoResponse(String response) {
+
+    }
+
+    @Override
+    public void networkError(String error) {
 
     }
 }

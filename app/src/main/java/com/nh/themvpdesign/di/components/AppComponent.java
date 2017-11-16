@@ -3,6 +3,7 @@ package com.nh.themvpdesign.di.components;
 import android.app.Application;
 
 import com.nh.themvpdesign.TheMvpDesignApplication;
+import com.nh.themvpdesign.data.DataRepository;
 import com.nh.themvpdesign.di.modules.ActivityBuilder;
 import com.nh.themvpdesign.di.modules.AppModule;
 import com.nh.themvpdesign.di.scopes.ApplicationScope;
@@ -15,7 +16,7 @@ import dagger.android.AndroidInjectionModule;
  * Created by dell pc on 11-11-2017.
  */
 @ApplicationScope
-@Component(modules = {AppModule.class, AndroidInjectionModule.class, ActivityBuilder.class})
+@Component(modules = {AppModule.class, DataRepository.class, AndroidInjectionModule.class, ActivityBuilder.class})
 public interface AppComponent {
 
 

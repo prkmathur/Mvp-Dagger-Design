@@ -24,7 +24,9 @@ public class RemoteDataSource implements DataSource {
     }
 
     @Override
-    public void getGithubRepos() {
+    public void getGithubRepos(String username, getgithubRepo callback) {
+
+        
 
     }
 }

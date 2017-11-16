@@ -60,13 +60,14 @@ public class AuthenticationActivity extends FragmentActivity implements Authenti
         presenter.dropView();
     }
 
+
     @Override
-    public void isLogin() {
+    public void GithubRepos(String response) {
 
     }
 
     @Override
-    public void onResponse() {
+    public void onError(String error) {
 
     }
 

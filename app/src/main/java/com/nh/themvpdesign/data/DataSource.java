@@ -6,13 +6,13 @@ package com.nh.themvpdesign.data;
 
 public interface DataSource {
 
-    interface getgithubRepo{
+    public interface getgithubRepo{
 
-        void githubRepoResponse();
+        void githubRepoResponse(String response);
 
-        void networkError();
+        void networkError(String error);
     }
 
-    void getGithubRepos();
+    void getGithubRepos(String username, getgithubRepo callback);
 
 }

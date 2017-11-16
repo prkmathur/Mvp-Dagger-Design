@@ -8,18 +8,16 @@ public class AuthenticationContract {
 
     interface View {
 
-        void isLogin();
+        void GithubRepos(String response);
 
-        void onResponse();
+        void onError(String error);
 
         void appendedName(String name);
     }
 
     interface Presenter {
 
-        void login();
-
-        void register();
+        void getGithubRepos(String username);
 
         void takeView(View view);
 
