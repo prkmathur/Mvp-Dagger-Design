@@ -8,9 +8,11 @@ public interface DataSource {
 
     interface getgithubRepo{
 
-
         void githubRepoResponse();
 
         void networkError();
     }
+
+    void getGithubRepos();
+
 }
