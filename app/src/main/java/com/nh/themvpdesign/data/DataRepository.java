@@ -1,9 +1,10 @@
 package com.nh.themvpdesign.data;
 
+import android.content.Context;
+
 import com.nh.themvpdesign.data.remote.RemoteDataSource;
 
 import javax.inject.Inject;
-import javax.naming.Context;
 
 /**
  * Created by dell pc on 12-11-2017.

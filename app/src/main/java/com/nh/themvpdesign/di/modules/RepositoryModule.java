@@ -1,9 +1,9 @@
 package com.nh.themvpdesign.di.modules;
 
+import android.content.Context;
+
 import com.nh.themvpdesign.data.DataRepository;
 import com.nh.themvpdesign.di.scopes.ApplicationScope;
-
-import javax.naming.Context;
 
 import dagger.Module;
 import dagger.Provides;
