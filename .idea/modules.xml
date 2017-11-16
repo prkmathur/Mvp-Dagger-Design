@@ -3,8 +3,10 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Mvp-Dagger-Design.iml" filepath="$PROJECT_DIR$/.idea/Mvp-Dagger-Design.iml" />
+      <module fileurl="file://E:\Projects_Documentation\Mvp-Dagger-Design\.idea\Mvp-Dagger-Design.iml" filepath="E:\Projects_Documentation\Mvp-Dagger-Design\.idea\Mvp-Dagger-Design.iml" />
       <module fileurl="file://F:\Projects\DaggerMVP\Mvp-Dagger-Design\TheMvpDesign.iml" filepath="F:\Projects\DaggerMVP\Mvp-Dagger-Design\TheMvpDesign.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://E:\Projects_Documentation\Mvp-Dagger-Design\app\app.iml" filepath="E:\Projects_Documentation\Mvp-Dagger-Design\app\app.iml" />
     </modules>
   </component>
 </project>
