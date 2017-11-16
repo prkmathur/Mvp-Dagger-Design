@@ -7,7 +7,8 @@ package com.nh.themvpdesign.data;
 public interface DataSource {
 
     interface getgithubRepo{
-        
+
+
         void githubRepoResponse();
 
         void networkError();
