@@ -104,7 +104,7 @@ public class AppModule {
     @ApplicationScope
     public Retrofit provideRetrofit(OkHttpClient okHttpClient, Gson gson){
         return new Retrofit.Builder()
-                .baseUrl("https://api.github.com")
+                .baseUrl("https://www.metaweather.com/api/")
                 .addConverterFactory(GsonConverterFactory.create(gson))
                 .client(okHttpClient)
                 .build();

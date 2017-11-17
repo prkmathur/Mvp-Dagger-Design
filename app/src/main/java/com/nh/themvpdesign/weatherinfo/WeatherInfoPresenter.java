@@ -1,7 +1,8 @@
-package com.nh.themvpdesign.authentication;
+package com.nh.themvpdesign.weatherinfo;
 
 import com.nh.themvpdesign.data.DataRepository;
 import com.nh.themvpdesign.data.DataSource;
+import com.nh.themvpdesign.models.WeatherData;
 
 import javax.inject.Inject;
 
@@ -9,15 +10,15 @@ import javax.inject.Inject;
  * Created by dell pc on 11-11-2017.
  */
 
-public class AuthenticationPresenter implements AuthenticationContract.Presenter,DataSource.getgithubRepo {
+public class WeatherInfoPresenter implements WeatherInfoContract.Presenter,DataSource.getgithubRepo {
 
     @Inject
     DataRepository dataRepository;
 
-    private AuthenticationContract.View view;
+    private WeatherInfoContract.View view;
 
     @Inject
-    public AuthenticationPresenter() {
+    public WeatherInfoPresenter() {
 
     }
 
@@ -27,7 +28,7 @@ public class AuthenticationPresenter implements AuthenticationContract.Presenter
     }
 
     @Override
-    public void takeView(AuthenticationContract.View view) {
+    public void takeView(WeatherInfoContract.View view) {
 
         this.view = view;
     }
@@ -51,7 +52,7 @@ public class AuthenticationPresenter implements AuthenticationContract.Presenter
      * @param response
      */
     @Override
-    public void githubRepoResponse(String response) {
+    public void githubRepoResponse(WeatherData response) {
         if(view != null) {
             view.GithubRepos(response);
         }

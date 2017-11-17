@@ -1,7 +1,7 @@
 package com.nh.themvpdesign.di.modules;
 
-import com.nh.themvpdesign.authentication.AuthenticationActivity;
-import com.nh.themvpdesign.authentication.AuthenticationModule;
+import com.nh.themvpdesign.weatherinfo.WeatherInfoActivity;
+import com.nh.themvpdesign.weatherinfo.WeatherInfoModule;
 import com.nh.themvpdesign.di.scopes.ActivityScope;
 
 import dagger.Module;
@@ -14,7 +14,7 @@ import dagger.android.ContributesAndroidInjector;
 public abstract class ActivityBuilder {
 
     @ActivityScope
-    @ContributesAndroidInjector(modules = AuthenticationModule.class)
-    abstract AuthenticationActivity bindAuthenticationActivity();
+    @ContributesAndroidInjector(modules = WeatherInfoModule.class)
+    abstract WeatherInfoActivity bindAuthenticationActivity();
 
 }

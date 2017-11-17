@@ -5,7 +5,7 @@
 <android.support.constraint.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.nh.themvpdesign.authentication.AuthenticationActivity">
+    tools:context="com.nh.themvpdesign.weatherinfo.WeatherInfoActivity">
 
     <EditText
         android:id="@+id/editText"
@@ -35,14 +35,13 @@
         android:layout_width="wrap_content"
         android:layout_height="14dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText"
+        app:layout_constraintBottom_toTopOf="@+id/container"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button"
         tools:text="Name" />
 
     <FrameLayout

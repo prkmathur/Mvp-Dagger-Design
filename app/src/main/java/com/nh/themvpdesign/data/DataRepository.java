@@ -3,6 +3,7 @@ package com.nh.themvpdesign.data;
 import android.content.Context;
 
 import com.nh.themvpdesign.data.remote.RemoteDataSource;
+import com.nh.themvpdesign.models.WeatherData;
 
 import javax.inject.Inject;
 
@@ -12,12 +13,10 @@ import javax.inject.Inject;
 
 public class DataRepository implements DataSource {
 
-    private Context context;
-
     private RemoteDataSource remoteDataSource;
 
-    public DataRepository(Context context,RemoteDataSource remoteDataSource) {
-        this.context = context;
+    @Inject
+    public DataRepository(RemoteDataSource remoteDataSource) {
         this.remoteDataSource = remoteDataSource;
     }
 
@@ -27,7 +26,7 @@ public class DataRepository implements DataSource {
         remoteDataSource.getGithubRepos(username, new getgithubRepo() {
 
             @Override
-            public void githubRepoResponse(String response) {
+            public void githubRepoResponse(WeatherData response) {
                 callback.githubRepoResponse(response);
             }
 

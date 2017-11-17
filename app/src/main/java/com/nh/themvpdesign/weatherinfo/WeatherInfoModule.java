@@ -1,4 +1,4 @@
-package com.nh.themvpdesign.authentication;
+package com.nh.themvpdesign.weatherinfo;
 
 import android.support.v4.app.FragmentManager;
 
@@ -12,20 +12,20 @@ import dagger.android.ContributesAndroidInjector;
  * Created by dell pc on 12-11-2017.
  */
 @Module
-public abstract class AuthenticationModule {
+public abstract class WeatherInfoModule {
 
     @Provides
     @ActivityScope
-    public static AuthenticationContract.Presenter providePresenter(AuthenticationPresenter authenticationPresenter){
-        return authenticationPresenter;
+    public static WeatherInfoContract.Presenter providePresenter(WeatherInfoPresenter weatherInfoPresenter){
+        return weatherInfoPresenter;
     }
 
     @Provides
     @ActivityScope
-    public static FragmentManager provideFragmentManager(AuthenticationActivity activity){
+    public static FragmentManager provideFragmentManager(WeatherInfoActivity activity){
         return  activity.getSupportFragmentManager();
     }
 
     @ContributesAndroidInjector
-    abstract AuthenticationFragment provideAuthenticationFragment();
+    abstract WeatherInfoFragment provideAuthenticationFragment();
 }

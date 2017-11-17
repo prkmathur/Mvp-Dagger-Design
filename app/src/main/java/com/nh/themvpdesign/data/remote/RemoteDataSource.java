@@ -4,7 +4,9 @@ import android.content.SharedPreferences;
 
 import com.nh.themvpdesign.data.DataSource;
 import com.nh.themvpdesign.data.NetworkService;
+import com.nh.themvpdesign.models.ConsolidatedWeather;
 import com.nh.themvpdesign.models.GithubRepo;
+import com.nh.themvpdesign.models.WeatherData;
 
 import java.util.List;
 
@@ -21,12 +23,11 @@ import timber.log.Timber;
 
 public class RemoteDataSource implements DataSource {
 
+    private final NetworkService  networkService;
 
-    private NetworkService  networkService;
+    private final SharedPreferences sharedPreferences;
 
-    private SharedPreferences sharedPreferences;
-
-    @Inject
+       @Inject
     public RemoteDataSource(NetworkService  networkService,SharedPreferences sharedPreferences) {
         this.networkService = networkService;
         this.sharedPreferences = sharedPreferences;
@@ -35,16 +36,16 @@ public class RemoteDataSource implements DataSource {
     @Override
     public void getGithubRepos(String username, final getgithubRepo callback) {
 
-        Call<List<GithubRepo>> listCall =  networkService.getAllRepos();
-        listCall.enqueue(new Callback<List<GithubRepo>>() {
+        Call<WeatherData> listCall =  networkService.getWeatherForUser("44418");
+        listCall.enqueue(new Callback<WeatherData>() {
             @Override
-            public void onResponse(Call<List<GithubRepo>> call, Response<List<GithubRepo>> response) {
+            public void onResponse(Call<WeatherData> call, Response<WeatherData> response) {
                 Timber.i(response.body().toString());
-                callback.githubRepoResponse(response.body().toString());
+                callback.githubRepoResponse(response.body());
             }
 
             @Override
-            public void onFailure(Call<List<GithubRepo>> call, Throwable t) {
+            public void onFailure(Call<WeatherData> call, Throwable t) {
                 Timber.i(t.toString());
                 callback.networkError(t.toString());
             }

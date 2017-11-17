@@ -1,4 +1,4 @@
-package com.nh.themvpdesign.authentication;
+package com.nh.themvpdesign.weatherinfo;
 
 
 import android.content.SharedPreferences;
@@ -12,23 +12,19 @@ import android.view.ViewGroup;
 
 import com.nh.themvpdesign.R;
 import com.nh.themvpdesign.databinding.FragmentAuthenticationBinding;
-import com.nh.themvpdesign.di.scopes.ActivityScope;
 
 import javax.inject.Inject;
 
-import dagger.android.AndroidInjector;
-import dagger.android.DispatchingAndroidInjector;
 import dagger.android.support.DaggerFragment;
-import dagger.android.support.HasSupportFragmentInjector;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 
-public class AuthenticationFragment extends DaggerFragment  {
+public class WeatherInfoFragment extends DaggerFragment  {
 
     @Inject
-    AuthenticationContract.Presenter presenter;
+    WeatherInfoContract.Presenter presenter;
 
     @Inject
     SharedPreferences sharedPreferences;
@@ -36,7 +32,7 @@ public class AuthenticationFragment extends DaggerFragment  {
     FragmentAuthenticationBinding binding;
 
     @Inject
-    public AuthenticationFragment() {
+    public WeatherInfoFragment() {
         // Required empty public constructor
     }
 

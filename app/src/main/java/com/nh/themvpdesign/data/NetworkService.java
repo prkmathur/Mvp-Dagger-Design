@@ -1,6 +1,8 @@
 package com.nh.themvpdesign.data;
 
+import com.nh.themvpdesign.models.ConsolidatedWeather;
 import com.nh.themvpdesign.models.GithubRepo;
+import com.nh.themvpdesign.models.WeatherData;
 
 import java.util.List;
 
@@ -16,6 +18,9 @@ public interface NetworkService {
 
     @GET("users/{username}/repos")
     Call<List<GithubRepo>> getReposForUser(@Path("username") String username);
+
+    @GET("location/{location}")
+    Call<WeatherData> getWeatherForUser(@Path("location") String location);
 
     @GET("repositories")
     Call<List<GithubRepo>> getAllRepos();

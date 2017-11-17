@@ -1,14 +1,16 @@
-package com.nh.themvpdesign.authentication;
+package com.nh.themvpdesign.weatherinfo;
+
+import com.nh.themvpdesign.models.WeatherData;
 
 /**
  * Created by dell pc on 11-11-2017.
  */
 
-public class AuthenticationContract {
+public class WeatherInfoContract {
 
     interface View {
 
-        void GithubRepos(String response);
+        void GithubRepos(WeatherData response);
 
         void onError(String error);
 
