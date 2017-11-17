@@ -5,17 +5,9 @@
     android:layout_height="match_parent"
     tools:context="com.nh.themvpdesign.weatherinfo.WeatherInfoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:id="@+id/presenter_hashcode"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:id="@+id/get_length"
-        android:layout_height="wrap_content" />
-
+        android:layout_height="match_parent" />
 </FrameLayout>
 </layout>
