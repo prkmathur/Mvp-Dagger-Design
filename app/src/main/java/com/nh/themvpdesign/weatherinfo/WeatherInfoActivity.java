@@ -36,7 +36,7 @@ public class WeatherInfoActivity extends FragmentActivity implements WeatherInfo
     FragmentManager fragmentManager;
 
     @Inject
-    SharedPreferences sharedPreferences;
+    WeatherInfoFragment fragment;
 
     ActivityAuthenticationBinding binding;
 
@@ -65,7 +65,7 @@ public class WeatherInfoActivity extends FragmentActivity implements WeatherInfo
 
     @Override
     public void GithubRepos(WeatherData response) {
-        binding.editText2.setText(response.toString());
+        fragment.setWeatherData(response.getConsolidatedWeathers());
     }
 
     @Override
@@ -93,9 +93,9 @@ public class WeatherInfoActivity extends FragmentActivity implements WeatherInfo
     protected void addFragment(){
 
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        WeatherInfoFragment fragment = new WeatherInfoFragment();
         fragmentTransaction.add(binding.container.getId(), fragment);
         fragmentTransaction.commit();
+
     }
 
     @Override

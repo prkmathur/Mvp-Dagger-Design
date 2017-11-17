@@ -1,17 +1,22 @@
 package com.nh.themvpdesign.weatherinfo;
 
 
-import android.content.SharedPreferences;
+import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.nh.themvpdesign.R;
+import com.nh.themvpdesign.adapters.WeatherInfoAdapter;
 import com.nh.themvpdesign.databinding.FragmentAuthenticationBinding;
+import com.nh.themvpdesign.models.ConsolidatedWeather;
+
+import java.util.ArrayList;
 
 import javax.inject.Inject;
 
@@ -27,7 +32,7 @@ public class WeatherInfoFragment extends DaggerFragment  {
     WeatherInfoContract.Presenter presenter;
 
     @Inject
-    SharedPreferences sharedPreferences;
+    WeatherInfoAdapter weatherInfoAdapter;
 
     FragmentAuthenticationBinding binding;
 
@@ -47,21 +52,15 @@ public class WeatherInfoFragment extends DaggerFragment  {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
-        binding.presenterHashcode.setText("PresenterObject "+presenter.hashCode());
-
-        binding.getLength.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showNameLength();
-            }
-        });
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        binding.recylerWeatherData.setLayoutManager(layoutManager);
+        binding.recylerWeatherData.setAdapter(weatherInfoAdapter);
     }
 
-    private void showNameLength(){
-        int length = sharedPreferences.getInt("LENGTH",0);
-        binding.presenterHashcode.setText("PresenterObject "+presenter.hashCode() +  length);
 
+    public void setWeatherData(ArrayList<ConsolidatedWeather> weatherData){
+        weatherInfoAdapter.setData(weatherData);
     }
 
 }
