@@ -17,6 +17,8 @@ public class WeatherInfoPresenter implements WeatherInfoContract.Presenter,DataS
 
     private WeatherInfoContract.View view;
 
+    private WeatherData weatherData;
+
     @Inject
     public WeatherInfoPresenter() {
 
@@ -39,6 +41,11 @@ public class WeatherInfoPresenter implements WeatherInfoContract.Presenter,DataS
     }
 
     @Override
+    public WeatherData getWeatherData() {
+        return weatherData;
+    }
+
+    @Override
     public void appendNamWithDepartment(String name) {
         if(name == null || name.isEmpty()){
             return;
@@ -53,6 +60,8 @@ public class WeatherInfoPresenter implements WeatherInfoContract.Presenter,DataS
      */
     @Override
     public void githubRepoResponse(WeatherData response) {
+
+        if(response != null){weatherData = response;}
         if(view != null) {
             view.GithubRepos(response);
         }

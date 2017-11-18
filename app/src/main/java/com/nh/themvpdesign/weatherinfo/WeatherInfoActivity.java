@@ -16,6 +16,7 @@ import com.nh.themvpdesign.models.WeatherData;
 
 import javax.inject.Inject;
 
+import dagger.Lazy;
 import dagger.android.AndroidInjection;
 import dagger.android.AndroidInjector;
 import dagger.android.DispatchingAndroidInjector;
@@ -30,7 +31,7 @@ public class WeatherInfoActivity extends FragmentActivity implements WeatherInfo
     NetworkService networkService;
 
     @Inject
-    WeatherInfoContract.Presenter presenter;
+    Lazy<WeatherInfoContract.Presenter> presenterProvider;
 
     @Inject
     FragmentManager fragmentManager;
@@ -39,20 +40,33 @@ public class WeatherInfoActivity extends FragmentActivity implements WeatherInfo
     WeatherInfoFragment fragment;
 
     ActivityAuthenticationBinding binding;
+    WeatherInfoContract.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_authentication);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_authentication);
         binding.button.setOnClickListener(this);
         addFragment();
+        presenter = (WeatherInfoContract.Presenter) getLastCustomNonConfigurationInstance();
+
+        if (presenter == null) {
+            presenter = presenterProvider.get();
+        }
+    }
+
+    @Override
+    public Object onRetainCustomNonConfigurationInstance() {
+        return presenter;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
+        if(presenter.getWeatherData() != null){
+            fragment.setWeatherData(presenter.getWeatherData().getConsolidatedWeathers());
+        }
         presenter.takeView(this);
     }
 
@@ -75,7 +89,7 @@ public class WeatherInfoActivity extends FragmentActivity implements WeatherInfo
 
     @Override
     public void appendedName(String name) {
-        binding.editText2.setText(name);
+
     }
 
     @Override

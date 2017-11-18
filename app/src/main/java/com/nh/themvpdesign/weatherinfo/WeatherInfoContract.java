@@ -25,6 +25,8 @@ public class WeatherInfoContract {
 
         void dropView();
 
+        WeatherData getWeatherData();
+
         void appendNamWithDepartment(String name);
 
     }
