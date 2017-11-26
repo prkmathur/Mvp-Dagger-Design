@@ -1,5 +1,6 @@
 package com.nh.themvpdesign.weatherinfo;
 
+import com.nh.themvpdesign.R;
 import com.nh.themvpdesign.data.DataRepository;
 import com.nh.themvpdesign.data.DataSource;
 import com.nh.themvpdesign.models.WeatherData;
@@ -12,16 +13,15 @@ import javax.inject.Inject;
 
 public class WeatherInfoPresenter implements WeatherInfoContract.Presenter,DataSource.getgithubRepo {
 
-    @Inject
-    DataRepository dataRepository;
+    private DataRepository dataRepository;
 
     private WeatherInfoContract.View view;
 
     private WeatherData weatherData;
 
     @Inject
-    public WeatherInfoPresenter() {
-
+    public WeatherInfoPresenter(DataRepository dataRepository) {
+        this.dataRepository = dataRepository;
     }
 
     @Override
@@ -31,7 +31,6 @@ public class WeatherInfoPresenter implements WeatherInfoContract.Presenter,DataS
 
     @Override
     public void takeView(WeatherInfoContract.View view) {
-
         this.view = view;
     }
 
@@ -61,9 +60,13 @@ public class WeatherInfoPresenter implements WeatherInfoContract.Presenter,DataS
     @Override
     public void githubRepoResponse(WeatherData response) {
 
-        if(response != null){weatherData = response;}
-        if(view != null) {
-            view.GithubRepos(response);
+        if(response!= null && response.getConsolidatedWeathers() != null) {
+            weatherData = response;
+            if(view != null) {
+                view.GithubRepos(response);
+            }
+        }else{
+            view.onError(R.string.error_message);
         }
     }
 
@@ -75,7 +78,7 @@ public class WeatherInfoPresenter implements WeatherInfoContract.Presenter,DataS
     @Override
     public void networkError(String error) {
         if(view != null) {
-            view.onError(error);
+            view.onError(R.string.error_message);
         }
     }
 }

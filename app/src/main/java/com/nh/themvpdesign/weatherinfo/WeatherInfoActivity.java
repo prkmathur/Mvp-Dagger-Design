@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import com.nh.themvpdesign.R;
 import com.nh.themvpdesign.data.NetworkService;
@@ -83,8 +84,8 @@ public class WeatherInfoActivity extends FragmentActivity implements WeatherInfo
     }
 
     @Override
-    public void onError(String error) {
-
+    public void onError(int rId) {
+        Toast.makeText(this,getString(rId),Toast.LENGTH_LONG).show();
     }
 
     @Override

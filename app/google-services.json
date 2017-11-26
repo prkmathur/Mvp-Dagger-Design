@@ -1,0 +1,41 @@
+{
+  "project_info": {
+    "project_number": "1033383316967",
+    "firebase_url": "https://blerb-1351.firebaseio.com",
+    "project_id": "blerb-1351"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1033383316967:android:9b3815e6eef5f2c4",
+        "android_client_info": {
+          "package_name": "com.nh.themvpdesign"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1033383316967-cregb0j9n0tertn26mnoabbuhuh4ck54.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcn6LdWRFvu2HUEW1IjoGyh3rmBASRFI4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

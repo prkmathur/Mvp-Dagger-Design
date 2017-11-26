@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class WeatherData {
 
+
     ArrayList<ConsolidatedWeather> consolidated_weather;
 
     public ArrayList<ConsolidatedWeather> getConsolidatedWeathers() {

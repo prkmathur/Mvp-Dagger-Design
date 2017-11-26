@@ -8,11 +8,11 @@ import com.nh.themvpdesign.models.WeatherData;
 
 public class WeatherInfoContract {
 
-    interface View {
+    public interface View {
 
         void GithubRepos(WeatherData response);
 
-        void onError(String error);
+        void onError(int RId);
 
         void appendedName(String name);
     }
